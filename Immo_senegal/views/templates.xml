@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="rental_product_inherit" inherit_id="website_sale_renting.rental_product">
+        <xpath expr="//section[@id='product_detail']/div/div/ol[@class='breadcrumb p-0 mb-2 m-lg-0']" position="replace">
+            <ol class="breadcrumb p-0 mb-2 m-lg-0">
+                <li class="breadcrumb-item o_not_editable">
+                    <a t-att-href="keep(category=0)">Appartements</a>
+                </li>
+                <li t-nocache="The category does not have to be cached, as the product can be accessed via different paths."
+                    t-if="category" class="breadcrumb-item">
+                    <a t-att-href="keep('/shop/category/%s' % slug(category), category=0)" t-field="category.name" />
+                </li>
+                <li class="breadcrumb-item active">
+                    <span t-field="product.name" />
+                </li>
+            </ol>
+        </xpath>
+
+    </template>
+</odoo>
